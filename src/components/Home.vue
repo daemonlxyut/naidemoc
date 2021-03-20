@@ -82,7 +82,8 @@ export default {
   padding: 0;
   margin: 0;
   text-align: center;
-  background: white;
+  background: #FFCC8A;
+  border: none
 }
 .image1 {
   /* width: 100%; */
