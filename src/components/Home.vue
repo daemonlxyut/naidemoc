@@ -82,7 +82,7 @@ export default {
   padding: 0;
   margin: 0;
   text-align: center;
-  background: #FFCC8A;
+  /* background: #FFCC8A; */
   border: none
 }
 .image1 {
