@@ -3,7 +3,7 @@
   <div class="header">
     <!-- ロゴマーク -->
     <div class="logo">
-      <img src="@/assets/naidemoc.png" class="fig">
+      <img src="@/assets/nAIdemoc_white.png" class="fig">
     </div>
 
     <!-- リンクメニュー -->
