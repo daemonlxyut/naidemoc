@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{ backgroundImage: 'url(' + require('@/assets/bg.png') + ')' }">
     <tab-menu/>
     <router-view/>
   </div>
@@ -30,15 +30,10 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #31302f;
-}
 
-body {
   min-height: 100vh;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  /* background-image: url('./assets/bg.png'); */
-  background-image: url('https://github.com/daemonlxyut/naidemoc/blob/master/docs/static/img/bg.png');
 }
-
 </style>
