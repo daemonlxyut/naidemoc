@@ -1,23 +1,43 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <tab-menu/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import TabMenu from '@/components/TabMenu'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    TabMenu
+  }
 }
 </script>
 
 <style>
+* {
+  /* 枠幅の設定 */
+  padding: 0;
+  margin: 0;
+}
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  /* フォント系設定 */
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #31302f;
 }
+
+body {
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-image: url('./assets/bg.png');
+}
+
 </style>
