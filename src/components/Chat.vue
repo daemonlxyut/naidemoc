@@ -10,6 +10,7 @@
         <div class="balloon" v-for="(val, i) in chatLog" v-bind:key="i">
           <div class="stamp_you" v-if="isStamp(i)">
             <!-- スタンプの場合の処理 -->
+            <img class="stamp_chat" v-bind:src="val.stamp">
           </div>
 
           <div class="balloon_you" v-else-if="isYou(i)">
@@ -43,7 +44,9 @@
     <!-- 右側 -->
     <div id="stamp_field">
       <div id="stamp_area">
-        <p>stamp01</p>
+        <div class="stamp_card" v-for="(item, i) in stampList" v-bind:key="i">
+          <img class="stamp_fig" v-bind:src="item.path" v-on:click="pushStamp(i)">
+        </div>
       </div>
     </div>
   </div>
@@ -69,12 +72,48 @@ export default {
         },
       ],
       // スタンプ一覧
-      stampList: {
-        stp1: {
-          path: "@/assets/stp1.png",
+      stampList: [
+        {
+          name: "stp1",
+          path: require("@/assets/stp1.png"),
           score: 10
         },
-      }
+        {
+          name: "stp2",
+          path: require("@/assets/stp2.png"),
+          score: 10
+        },
+        {
+          name: "stp3",
+          path: require("@/assets/stp3.png"),
+          score: 10
+        },
+        {
+          name: "stp4",
+          path: require("@/assets/stp4.png"),
+          score: 10
+        },
+        {
+          name: "stp5",
+          path: require("@/assets/stp5.png"),
+          score: 10
+        },
+        {
+          name: "stp6",
+          path: require("@/assets/stp6.png"),
+          score: 10
+        },
+        {
+          name: "stp7",
+          path: require("@/assets/stp7.png"),
+          score: 10
+        },
+        {
+          name: "stp8",
+          path: require("@/assets/stp8.png"),
+          score: 10
+        },
+      ],
     }
   },
   methods: {
@@ -85,6 +124,18 @@ export default {
     isYou(i) {
       // チャット履歴が入力者か確認
       return this.chatLog[i].who == "you";
+    },
+
+    pushStamp(i) {
+      // スタンプ押した時の処理
+      console.log(i);
+      // 配列chatLogに追加
+      this.chatLog.push({
+        who: "you",
+        msg: null,
+        style: "stamp",
+        stamp: this.stampList[i].path
+      });
     },
 
     send() {
@@ -196,6 +247,7 @@ export default {
 
 
 <style scoped>
+  /* チャットページ全体 */
   #chat{
     height: calc(100vh - 60px);
     margin: 0;
@@ -204,6 +256,7 @@ export default {
     /* font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif; */
   }
 
+  /* チャット蘭 */
   #talk{
     width: 70%;
     height: calc(98% - 0px);
@@ -213,23 +266,6 @@ export default {
     float: left;
     /* background-color: #ffcc8a; */
     /* text-align: right; */
-  }
-
-  #stamp_field{
-    width: 25%;
-    height: calc(100vh - 60px);
-    margin: 0;
-    padding: 0;
-    float: right;
-  }
-
-  #stamp_area {
-    width: 19%;
-    top: calc(2% + 60px);
-    bottom: 2%;
-    padding: 2%;
-    background-color: #ffe0b8;
-    position: absolute;
   }
 
   #field{
@@ -295,13 +331,25 @@ export default {
     outline: none;
   }
 
+  /* トーク内容 */
   .balloon{
     background-color: #ffe0b8;
   }
+
+  .stamp_you {
+    /* margin-right: auto; */
+    text-align: right;
+  }
+  .stamp_chat {
+    max-width: 150px;
+    max-height: 150px;
+    margin: 10px;
+    padding: 8px;
+  }
+
   .balloon_you{
     margin: 10px 0;
-    /* ふきだし自体は右揃え */
-    text-align: right;
+    text-align: right; /* ふきだし自体は右揃え */
   }
   .balloon_you p{
     display: inline-block;
@@ -313,10 +361,8 @@ export default {
     background-color: #FF4609;
     color: #dfdfdf;
     font-size: 15px;
-    /* 単語（特に）アルファベットの改行． */
-    word-wrap: break-word;
-    /* ふきだしの中では左揃え */
-    text-align: left;
+    word-wrap: break-word; /* 単語の改行． */
+    text-align: left; /* ふきだしの中では左揃え */
   }
   .balloon_you p:after{
     content: "";
@@ -373,4 +419,51 @@ export default {
     margin: 0;
     padding: 0;
   }
+
+  /* スタンプ系列 */
+  #stamp_field{
+    width: 25%;
+    height: calc(100vh - 60px);
+    margin: 0;
+    padding: 0;
+    float: right;
+  }
+
+  #stamp_area {
+    width: 19%;
+    top: calc(2% + 60px);
+    bottom: 2%;
+    padding: 2%;
+    background-color: #ffe0b8;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .stamp_card {
+    margin: 5px;
+    width: 120px;
+    height: 120px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    position: relative;
+  }
+
+  .stamp_fig {
+    max-height: 100px;
+    max-width: 100px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%
+  }
+
 </style>
