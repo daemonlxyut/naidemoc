@@ -37,8 +37,8 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  background-image: url('./assets/bg.png');
-  /* background-image: url('https://github.com/daemonlxyut/naidemoc/blob/master/docs/static/img/bg.3a04566.png'); */
+  /* background-image: url('./assets/bg.png'); */
+  background-image: url('https://github.com/daemonlxyut/naidemoc/blob/master/docs/static/img/bg.3a04566.png');
 }
 
 </style>
