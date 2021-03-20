@@ -2,20 +2,19 @@
 
 > A Vue.js application of Interactive AI chat bot
 
-## Build Setup
+## What is nAIdemoc?
 
-``` bash
-# install dependencies
-npm install
+nAIdemocはAIによるツッコミチャットボットです。
+あなたの「ボケ」に応じた適切な「ツッコミ」を返します。
+本アプリケーションはチャット形式で誰でも気軽に扱うことができます。
+アプリケーションは[こちら](https://daemonlxyut.github.io/naidemoc/)のリンクからアクセスできます。
 
-# serve with hot reload at localhost:8080
-npm run dev
+## フロントエンド実装環境
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+- Node.js v14.16.0
+- npm 7.6.1
+- vue-cli 4.5.11
+- npm packages
+    - "axios": "^0.21.1",
+    - "vue": "^2.5.2",
+    - "vue-router": "^3.0.1"
