@@ -113,6 +113,21 @@ export default {
           path: require("@/assets/stp8.png"),
           score: 10
         },
+        {
+          name: "stp9",
+          path: require("@/assets/stp9.png"),
+          score: 10
+        },
+        {
+          name: "stp10",
+          path: require("@/assets/stp10.png"),
+          score: 10
+        },
+        {
+          name: "stp11",
+          path: require("@/assets/stp11.png"),
+          score: 10
+        },
       ],
     }
   },
@@ -341,7 +356,7 @@ export default {
     text-align: right;
   }
   .stamp_chat {
-    max-width: 150px;
+    /* max-width: 150px; */
     max-height: 150px;
     margin: 10px;
     padding: 8px;
