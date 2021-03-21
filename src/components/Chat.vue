@@ -226,7 +226,7 @@ export default {
       let csrftoken = getCookie('csrftoken');
 
       // APIのURL
-      let url = 'https://tlabapi-hackday2021.azurewebsites.net/test/';
+      let url = 'https://tlabapi-hackday2021.azurewebsites.net/api/aichat/';
       let uri = url + '?' + 'text' + '=' + data;
 
       // 送信時パラメータの設定
