@@ -38,6 +38,16 @@
     </div>
 
     <div class="contents">
+      <h2>技術紹介</h2>
+      <div class="collection2">
+        <div class="card2" v-for="(item, i) in techDesc" v-bind:key="i">
+          <div class="card-desc"><p>{{ item.description }}</p></div>
+          <div class="tech-img"><img class="tech-fig" v-bind:src="item.path"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contents">
       <h2>{{ team }} について</h2>
       <p>
         {{ team }} は宇宙と技術をこよなく愛する有志の学生チームです。
@@ -57,19 +67,29 @@ export default {
         {
           "step": 1,
           "description": "チャットでボケよう！",
-          "path": require("@/assets/test_step1.png")
+          "path": require("@/assets/step1.png")
         },
         {
           "step": 2,
           "description": "AIがツッコミを返してくれる！",
-          "path": require("@/assets/test_step2.png")
+          "path": require("@/assets/step2.png")
         },
         {
           "step": 3,
           "description": "気持ちをスタンプで表現！",
-          "path": require("@/assets/test_step3.png")
+          "path": require("@/assets/step3.png")
         },
-      ]
+      ],
+      techDesc: [
+        {
+          "description": "System",
+          "path": require("@/assets/desc1.png"),
+        },
+        {
+          "description": "Data Flow",
+          "path": require("@/assets/desc2.png"),
+        },
+      ],
     }
   }
 }
@@ -77,6 +97,31 @@ export default {
 
 
 <style scoped>
+.tech-img {
+  /* margin-left: auto;
+  margin-right: auto; */
+  text-align: center;
+}
+.tech-fig {
+  max-width: 80%;
+  max-height: 400px;
+}
+.collection2 {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: flex-start;
+}
+.card2 {
+  padding: 20px;
+  margin: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
 /* メインの図について */
 .fig {
   padding: 0;
@@ -125,7 +170,7 @@ export default {
 .card {
   padding: 20px;
   margin: 20px;
-  background: white;
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 20px;
 }
 .card-img {
