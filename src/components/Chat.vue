@@ -228,14 +228,16 @@ export default {
       // APIのURL
       let url = 'https://tlabapi-hackday2021.azurewebsites.net/api/aichat/';
       let uri = url + '?' + 'text' + '=' + data;
+      // console.log(uri);
 
       // 送信時パラメータの設定
       let params = new URLSearchParams();
       params.append("X-CSRFToken", csrftoken);
 
       // fetch GETの実行
-      axios.get(uri, params)
+      axios.post(uri, params)
       .then(res => {
+        console.log(res);
         // 正常処理
         if (res.status == 200) {
           this.chatLog.push({
