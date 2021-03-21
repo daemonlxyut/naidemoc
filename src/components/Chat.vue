@@ -240,6 +240,7 @@ export default {
         if (res.status == 200) {
           this.chatLog.push({
             who: "robot",
+            // msg: res.data.output,
             msg: res.data.output,
             style: "message",
             stamp: null,
