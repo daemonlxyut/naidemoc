@@ -21,6 +21,7 @@ nAIdemocはAIによるツッコミチャットボットです。<br>
 
 ```sh
 # プロジェクト作成後にaxiosのみ個別のインストール
+cd [プロジェクト名]
 npm install axios
 ```
 
@@ -39,7 +40,7 @@ vue init webpack [プロジェクト名]
 # => 基本は指示通りに。追加パッケージはRouterのみで行った。
 ```
 
-## ローカルでの検証とビルド
+## ローカル環境での検証とビルド
 
 ```sh
 # プロジェクトのディレクトリへ移動
@@ -51,6 +52,28 @@ npm run dev
 
 # ビルドしてデプロイ用フォルダを生成
 npm run build
+```
+
+## ビルドの設定
+
+`npm run build`実行時の出力先を`/dist`から`/docs`に変更
+
+```js
+module.exports = {
+  build: {
+    // Before
+    index: path.resolve(__dirname, '../dist/index.html'),
+    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+
+    // After
+    index: path.resolve(__dirname, '../docs/index.html'),
+    assetsRoot: path.resolve(__dirname, '../docs'),
+    assetsSubDirectory: 'static',
+    assetsPublicPath: './',
+  }
+}
 ```
 
 ## サイトマップ
