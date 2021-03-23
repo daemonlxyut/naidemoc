@@ -19,6 +19,11 @@ nAIdemocはAIによるツッコミチャットボットです。<br>
     - vue: 2.5.2
     - vue-router 3.0.1
 
+```sh
+# プロジェクト作成後にaxiosのみ個別のインストール
+npm install axios
+```
+
 ## プロジェクト作成時の手順
 
 ```sh
