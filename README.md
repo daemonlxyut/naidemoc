@@ -4,9 +4,9 @@
 
 ## What is nAIdemoc?
 
-nAIdemocはAIによるツッコミチャットボットです。
-あなたの「ボケ」に応じた適切な「ツッコミ」を返します。
-本アプリケーションはチャット形式で誰でも気軽に扱うことができます。
+nAIdemocはAIによるツッコミチャットボットです。<br>
+あなたの「ボケ」に応じた適切な「ツッコミ」を返します。<br>
+本アプリケーションはチャット形式で誰でも気軽に扱うことができます。<br>
 アプリケーションは[こちら](https://daemonlxyut.github.io/naidemoc/)のリンクからアクセスできます。
 
 ## フロントエンド実装環境
@@ -15,13 +15,13 @@ nAIdemocはAIによるツッコミチャットボットです。
 - npm 7.6.1
 - vue-cli 4.5.11
 - npm packages
-    - "axios": "^0.21.1",
-    - "vue": "^2.5.2",
-    - "vue-router": "^3.0.1"
+    - axios: 0.21.1
+    - vue: 2.5.2
+    - vue-router 3.0.1
 
 ## プロジェクト作成時の手順
 
-```bash
+```sh
 # node.jsのインストール確認
 node --version
 npm --version
@@ -48,3 +48,7 @@ npm run dev
 npm run build
 ```
 
+## サイトマップ
+
+- [ホームページ](https://daemonlxyut.github.io/naidemoc/#/)
+- [チャットページ](https://daemonlxyut.github.io/naidemoc/#/chat)
