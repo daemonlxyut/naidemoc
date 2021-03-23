@@ -1,4 +1,4 @@
-# naidemoc
+# nAIdemoc
 
 > A Vue.js application of Interactive AI chat bot
 
@@ -52,3 +52,8 @@ npm run build
 
 - [ホームページ](https://daemonlxyut.github.io/naidemoc/#/)
 - [チャットページ](https://daemonlxyut.github.io/naidemoc/#/chat)
+
+## Creator
+
+nonodebris.com
+
