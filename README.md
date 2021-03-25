@@ -15,18 +15,23 @@ closed.
 
 ## フロントエンド実装環境
 
-- Node.js v14.16.0
-- npm 7.6.1
-- vue-cli 4.5.11
+- Node.js: v14.16.0
+- npm: 7.6.1
+- vue-cli: 4.5.11
 - npm packages
-    - axios: 0.21.1
     - vue: 2.5.2
     - vue-router 3.0.1
-
+    - vuetify: 2.4.8
+    - axios: 0.21.1
+    - sass-loader@11.0.1
+    - deepmerge@4.2.2
+    - sass@1.32.8
 ```sh
 # プロジェクト作成後にaxiosのみ個別のインストール
 cd [プロジェクト名]
 npm install axios
+npm install vuetify
+npm install sass sass-loader deepmerge -D
 ```
 
 ## プロジェクト作成時の手順
