@@ -28,7 +28,7 @@
       </v-card>
     </v-row>
 
-    <!-- About nonodebris.com -->
+    <!-- How to Play -->
     <v-row justify="center" class="px-8 py-3">
       <v-card width="90%">
         <v-card-title>How to Play</v-card-title>
@@ -50,7 +50,7 @@
       </v-card>
     </v-row>
 
-    <!-- About nonodebris.com -->
+    <!-- Technologies -->
     <v-row justify="center" class="px-8 py-3">
       <v-card width="90%">
         <v-card-title>Technologies</v-card-title>
@@ -77,7 +77,6 @@
       <v-card width="90%">
         <v-card-title>{{ team }}</v-card-title>
         <v-card-text>
-          {{ length2 }}
           {{ team }} は宇宙と技術をこよなく愛する有志の学生チームです。
         </v-card-text>
         <v-divider/>
@@ -94,12 +93,14 @@
         </div>
 
         <v-card-text><strong>Plaundry - 2020</strong></v-card-text>
-        <v-img
-          contain
-          max-width="100%"
-          max-height="calc(100vh - 56px - 36px - 24px - 50px)"
-          :src="require('@/assets/home/plaundry.png')"
-        />
+        <v-layout justify-center>
+          <v-img
+            contain
+            max-width="90%"
+            max-height="calc(100vh - 56px - 36px - 24px - 50px)"
+            :src="require('@/assets/home/plaundry.png')"
+          />
+        </v-layout>
       </v-card>
     </v-row>
   </v-conteiner>
@@ -109,6 +110,9 @@
 <script>
 export default {
   name: 'Home',
+  props: {
+    source: String,
+  },
   data () {
     return {
       product: 'nAIdemoc',
@@ -154,7 +158,7 @@ export default {
 }
 
 .tube {
-  max-width: 100%;
+  max-width: 90%;
   max-height: calc(100vh - 56px - 36px - 24px - 50px);
   aspect-ratio: 16 / 9;
   margin:auto;
