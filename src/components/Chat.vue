@@ -21,7 +21,7 @@
           <div class="balloon_robot" v-else>
             <!-- AIの場合の処理 -->
             <div class="icon">
-              <img src="@/assets/icon.png">
+              <img src="@/assets/icon/icon.png">
             </div>
             <div class="text_robot">
               <div class="chat_robot">
@@ -75,57 +75,57 @@ export default {
       stampList: [
         {
           name: "stp1",
-          path: require("@/assets/stp1.png"),
+          path: require("@/assets/stamp/stp1.png"),
           score: 10
         },
         {
           name: "stp2",
-          path: require("@/assets/stp2.png"),
+          path: require("@/assets/stamp/stp2.png"),
           score: 10
         },
         {
           name: "stp3",
-          path: require("@/assets/stp3.png"),
+          path: require("@/assets/stamp/stp3.png"),
           score: 10
         },
         {
           name: "stp4",
-          path: require("@/assets/stp4.png"),
+          path: require("@/assets/stamp/stp4.png"),
           score: 10
         },
         {
           name: "stp5",
-          path: require("@/assets/stp5.png"),
+          path: require("@/assets/stamp/stp5.png"),
           score: 10
         },
         {
           name: "stp6",
-          path: require("@/assets/stp6.png"),
+          path: require("@/assets/stamp/stp6.png"),
           score: 10
         },
         {
           name: "stp7",
-          path: require("@/assets/stp7.png"),
+          path: require("@/assets/stamp/stp7.png"),
           score: 10
         },
         {
           name: "stp8",
-          path: require("@/assets/stp8.png"),
+          path: require("@/assets/stamp/stp8.png"),
           score: 10
         },
         {
           name: "stp9",
-          path: require("@/assets/stp9.png"),
+          path: require("@/assets/stamp/stp9.png"),
           score: 10
         },
         {
           name: "stp10",
-          path: require("@/assets/stp10.png"),
+          path: require("@/assets/stamp/stp10.png"),
           score: 10
         },
         {
           name: "stp11",
-          path: require("@/assets/stp11.png"),
+          path: require("@/assets/stamp/stp11.png"),
           score: 10
         },
       ],
