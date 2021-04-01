@@ -34,10 +34,9 @@
     </v-main>
 
     <!-- Footer -->
-    <v-footer app color="#350800" class="white--text">
+    <v-footer color="#350800" class="white--text">
       <v-spacer/>
       <span>&copy; 2021 {{ team }}</span>
-      <v-spacer/>
     </v-footer>
   </v-app>
 </div>
@@ -70,3 +69,12 @@ export default {
   }
 }
 </script>
+
+<style>
+/* #app v-main {
+  background-image: url('./assets/home/bg.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+} */
+</style>
