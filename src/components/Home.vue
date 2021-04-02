@@ -2,7 +2,7 @@
 <div class="home">
   <!-- About nAIdemoc -->
   <v-row justify="center" class="px-8 py-6">
-    <v-card width="90%">
+    <v-card width="95%" max-width="600px">
       <!-- Main Image -->
       <v-img max-height="calc(100vh - 56px - 36px - 24px - 50px)" :src="require('@/assets/home/bg.png')">
         <v-layout justify-center align-center>
@@ -29,7 +29,7 @@
 
   <!-- How to Play -->
   <v-row justify="center" class="px-8 py-3">
-    <v-card width="90%">
+    <v-card width="95%" max-width="600px">
       <v-card-title>How to Play</v-card-title>
       <v-carousel height="auto" show-arrows-on-hover>
         <v-carousel-item
@@ -51,7 +51,7 @@
 
   <!-- Technologies -->
   <v-row justify="center" class="px-8 py-3">
-    <v-card width="90%">
+    <v-card width="95%" max-width="600px">
       <v-card-title>Technologies</v-card-title>
       <v-carousel height="auto" show-arrows-on-hover>
         <v-carousel-item
@@ -73,12 +73,11 @@
 
   <!-- About nonodebris.com -->
   <v-row justify="center" class="px-8 py-6">
-    <v-card width="90%">
+    <v-card width="95%" max-width="600px">
       <v-card-title>{{ team }}</v-card-title>
       <v-card-text>
         {{ team }} は宇宙と技術をこよなく愛する有志の学生チームです。
       </v-card-text>
-      <v-divider/>
 
       <v-card-title>Past Initiatives</v-card-title>
       <v-card-text><strong>Res-CUE!!! - 2018</strong></v-card-text>
@@ -102,6 +101,13 @@
       </v-layout>
     </v-card>
   </v-row>
+
+  <!-- Footer -->
+  <v-footer color="#350800" class="white--text">
+    <v-spacer/>
+    <span>&copy; 2021 {{ team }}</span>
+    <v-spacer/>
+  </v-footer>
 </div>
 </template>
 
