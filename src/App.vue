@@ -65,16 +65,7 @@ export default {
         },
       ],
       team: "nonodebris.com"
-    }    
+    }
   }
 }
 </script>
-
-<style>
-/* #app v-main {
-  background-image: url('./assets/home/bg.png');
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-} */
-</style>
