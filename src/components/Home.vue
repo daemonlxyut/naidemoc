@@ -1,109 +1,107 @@
 <template>
 <div class="home">
-  <v-conteiner>
-    <!-- About nAIdemoc -->
-    <v-row justify="center" class="px-8 py-6">
-      <v-card width="90%">
-        <!-- Main Image -->
-        <v-img max-height="calc(100vh - 56px - 36px - 24px - 50px)" :src="require('@/assets/home/bg.png')">
-          <v-layout justify-center align-center>
-            <v-img 
-              contain
-              max-width="80%"
-              max-height="calc(100vh - 56px - 36px - 24px - 50px)"
-              :src="require('@/assets/home/main.png')"
-            />
-          </v-layout>
-        </v-img>
-
-        <!-- Description -->
-        <v-card-title>{{ product }}</v-card-title>
-        <v-card-text>
-          コンピュータが笑いを取る時代が来た！？
-          <br/>
-          {{ product }} は機械学習を応用したツッコミチャットBOTです。
-          <br/>
-          あなたのボケに応じてツッコミを返してくれます。
-        </v-card-text>
-      </v-card>
-    </v-row>
-
-    <!-- How to Play -->
-    <v-row justify="center" class="px-8 py-3">
-      <v-card width="90%">
-        <v-card-title>How to Play</v-card-title>
-        <v-carousel height="auto" show-arrows-on-hover>
-          <v-carousel-item
-            v-for="(item,i) in howToPlay"
-            :key="i"
-            reverse-transition="fade-transition"
-            transition="fade-transition"
-          >
-            <v-img
-              contain
-              max-width="100%" 
-              max-height="calc(100vh - 56px - 36px - 24px - 50px)"
-              :src="item.path"
-            />
-          </v-carousel-item>
-        </v-carousel>
-      </v-card>
-    </v-row>
-
-    <!-- Technologies -->
-    <v-row justify="center" class="px-8 py-3">
-      <v-card width="90%">
-        <v-card-title>Technologies</v-card-title>
-        <v-carousel height="auto" show-arrows-on-hover>
-          <v-carousel-item
-            v-for="(item,i) in techDesc"
-            :key="i"
-            reverse-transition="fade-transition"
-            transition="fade-transition"
-          >
-            <v-img
-              contain
-              max-width="100%" 
-              max-height="calc(100vh - 56px - 36px - 24px - 50px)"
-              :src="item.path"
-            />
-          </v-carousel-item>
-        </v-carousel>
-      </v-card>
-    </v-row>
-
-    <!-- About nonodebris.com -->
-    <v-row justify="center" class="px-8 py-6">
-      <v-card width="90%">
-        <v-card-title>{{ team }}</v-card-title>
-        <v-card-text>
-          {{ team }} は宇宙と技術をこよなく愛する有志の学生チームです。
-        </v-card-text>
-        <v-divider/>
-
-        <v-card-title>Past Initiatives</v-card-title>
-        <v-card-text><strong>Res-CUE!!! - 2018</strong></v-card-text>
-        <div class="tube">
-          <iframe 
-            width="500px" height="350px"
-            src="https://www.youtube.com/embed/ZGGGOiP5irA" title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen 
-          />
-        </div>
-
-        <v-card-text><strong>Plaundry - 2020</strong></v-card-text>
-        <v-layout justify-center>
-          <v-img
+  <!-- About nAIdemoc -->
+  <v-row justify="center" class="px-8 py-6">
+    <v-card width="90%">
+      <!-- Main Image -->
+      <v-img max-height="calc(100vh - 56px - 36px - 24px - 50px)" :src="require('@/assets/home/bg.png')">
+        <v-layout justify-center align-center>
+          <v-img 
             contain
-            max-width="90%"
+            max-width="80%"
             max-height="calc(100vh - 56px - 36px - 24px - 50px)"
-            :src="require('@/assets/home/plaundry.png')"
+            :src="require('@/assets/home/main.png')"
           />
         </v-layout>
-      </v-card>
-    </v-row>
-  </v-conteiner>
+      </v-img>
+
+      <!-- Description -->
+      <v-card-title>{{ product }}</v-card-title>
+      <v-card-text>
+        コンピュータが笑いを取る時代が来た！？
+        <br/>
+        {{ product }} は機械学習を応用したツッコミチャットBOTです。
+        <br/>
+        あなたのボケに応じてツッコミを返してくれます。
+      </v-card-text>
+    </v-card>
+  </v-row>
+
+  <!-- How to Play -->
+  <v-row justify="center" class="px-8 py-3">
+    <v-card width="90%">
+      <v-card-title>How to Play</v-card-title>
+      <v-carousel height="auto" show-arrows-on-hover>
+        <v-carousel-item
+          v-for="(item,i) in howToPlay"
+          :key="i"
+          reverse-transition="fade-transition"
+          transition="fade-transition"
+        >
+          <v-img
+            contain
+            max-width="100%" 
+            max-height="calc(100vh - 56px - 36px - 24px - 50px)"
+            :src="item.path"
+          />
+        </v-carousel-item>
+      </v-carousel>
+    </v-card>
+  </v-row>
+
+  <!-- Technologies -->
+  <v-row justify="center" class="px-8 py-3">
+    <v-card width="90%">
+      <v-card-title>Technologies</v-card-title>
+      <v-carousel height="auto" show-arrows-on-hover>
+        <v-carousel-item
+          v-for="(item,i) in techDesc"
+          :key="i"
+          reverse-transition="fade-transition"
+          transition="fade-transition"
+        >
+          <v-img
+            contain
+            max-width="100%" 
+            max-height="calc(100vh - 56px - 36px - 24px - 50px)"
+            :src="item.path"
+          />
+        </v-carousel-item>
+      </v-carousel>
+    </v-card>
+  </v-row>
+
+  <!-- About nonodebris.com -->
+  <v-row justify="center" class="px-8 py-6">
+    <v-card width="90%">
+      <v-card-title>{{ team }}</v-card-title>
+      <v-card-text>
+        {{ team }} は宇宙と技術をこよなく愛する有志の学生チームです。
+      </v-card-text>
+      <v-divider/>
+
+      <v-card-title>Past Initiatives</v-card-title>
+      <v-card-text><strong>Res-CUE!!! - 2018</strong></v-card-text>
+      <div class="tube">
+        <iframe 
+          width="500px" height="350px"
+          src="https://www.youtube.com/embed/ZGGGOiP5irA" title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen 
+        />
+      </div>
+
+      <v-card-text><strong>Plaundry - 2020</strong></v-card-text>
+      <v-layout justify-center>
+        <v-img
+          contain
+          max-width="90%"
+          max-height="calc(100vh - 56px - 36px - 24px - 50px)"
+          :src="require('@/assets/home/plaundry.png')"
+        />
+      </v-layout>
+    </v-card>
+  </v-row>
 </div>
 </template>
 
