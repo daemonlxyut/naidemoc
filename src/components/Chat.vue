@@ -76,74 +76,63 @@ export default {
         {
           name: "stp1",
           path: require("@/assets/stamp/stp1.png"),
-          score: 10
         },
         {
           name: "stp2",
           path: require("@/assets/stamp/stp2.png"),
-          score: 10
         },
         {
           name: "stp3",
           path: require("@/assets/stamp/stp3.png"),
-          score: 10
         },
         {
           name: "stp4",
           path: require("@/assets/stamp/stp4.png"),
-          score: 10
         },
         {
           name: "stp5",
           path: require("@/assets/stamp/stp5.png"),
-          score: 10
         },
         {
           name: "stp6",
           path: require("@/assets/stamp/stp6.png"),
-          score: 10
         },
         {
           name: "stp7",
           path: require("@/assets/stamp/stp7.png"),
-          score: 10
         },
         {
           name: "stp8",
           path: require("@/assets/stamp/stp8.png"),
-          score: 10
         },
         {
           name: "stp9",
           path: require("@/assets/stamp/stp9.png"),
-          score: 10
         },
         {
           name: "stp10",
           path: require("@/assets/stamp/stp10.png"),
-          score: 10
         },
         {
           name: "stp11",
           path: require("@/assets/stamp/stp11.png"),
-          score: 10
         },
       ],
     }
   },
   methods: {
+    // チャット履歴がスタンプかどうか確認
     isStamp(i) {
-      // チャット履歴がスタンプかどうか確認
       return this.chatLog[i].style == "stamp";
     },
+
+    // チャット履歴が入力者か確認
     isYou(i) {
-      // チャット履歴が入力者か確認
       return this.chatLog[i].who == "you";
     },
 
+    // スタンプ押した時の処理
     pushStamp(i) {
-      // スタンプ押した時の処理
-      console.log(i);
       // 配列chatLogに追加
       this.chatLog.push({
         who: "you",
@@ -153,13 +142,12 @@ export default {
       });
     },
 
+    // 送信ボタン実行時の処理
     send() {
-      // 送信ボタン実行時の処理
-
       // 空白の時は何もしない
       if (this.textmsg === '') return;
 
-      // 配列chatLogに追加
+      // 入力者の入力内容をchatLogに追記
       this.chatLog.push({
         who: "you",
         msg: this.textmsg,
@@ -167,28 +155,22 @@ export default {
         stamp: null
       });
 
-      // データを送信用に変換
-      let jsontext = JSON.stringify({
-        "text": this.textmsg
-      });
+      // URIで本番APIと通信
       let uritext = encodeURIComponent(this.textmsg);
-
-      // APIと通信
-      // this.api_demo(jsontext);
       this.api_release(uritext);
+
+      // デモ用APIと通信
+      // let jsontext = JSON.stringify({
+      //   "text": this.textmsg
+      // });
+      // this.api_demo(jsontext);
 
       // 送信ボタンを押した後は空欄に戻す
       this.textmsg = '';
-
-      // 下端までスクロール
-      // var obj = document.getElementById(targetId);
-      // obj.scrollTop = obj.scrollHeight;
-      // let target = document.getElementById('field');
-      // target.scroll(false);
     },
 
+    // 擬似API
     api_demo(data) {
-      // 擬似API
       const push = () => {
         // AIの実行結果を会話に反映
         this.chatLog.push({
@@ -203,8 +185,8 @@ export default {
       setTimeout(push, 1000);
     },
 
+    // API通信
     api_release(data) {
-      // API通信
       // クッキー取得関数
       function getCookie(name) {
           var cookieValue = null;
@@ -228,7 +210,6 @@ export default {
       // APIのURL
       let url = 'https://tlabapi-hackday2021.azurewebsites.net/api/aichat/';
       let uri = url + '?' + 'text' + '=' + data;
-      // console.log(uri);
 
       // 送信時パラメータの設定
       let params = new URLSearchParams();
@@ -237,19 +218,17 @@ export default {
       // fetch GETの実行
       axios.post(uri, params)
       .then(res => {
-        console.log(res);
         // 正常処理
         if (res.status == 200) {
           this.chatLog.push({
             who: "robot",
-            // msg: res.data.output,
             msg: res.data.output,
             style: "message",
             stamp: null,
           });
         }
+        // ステータスコードが200以外のとき
         else {
-          // ステータスコードが200以外のとき
           throw "status is not normal.";
         }
       })
@@ -260,7 +239,6 @@ export default {
     },
   }
 }
-
 </script>
 
 
