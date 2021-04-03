@@ -5,14 +5,18 @@
     <v-app-bar app color="#350800" dark>
       <v-app-bar-nav-icon @click="drawer=!drawer" />
       <v-spacer/>
-      <v-img contain max-height="60%" :src="require('@/assets/logo/nAIdemoc_white.png')" />
+      <v-img contain height="60%" :src="require('@/assets/logo/nAIdemoc_white.png')" />
       <v-spacer/>
     </v-app-bar>
 
     <!-- Navigation Menu -->
     <v-navigation-drawer app v-model="drawer" temporary>
-      <v-list dense>
-        <v-list-item v-for="item in items" :key="item.name" link :to="item.path" @click="drawer=false">
+      <v-row justify="center" class="px-6 py-8">
+        <v-img contain height="30px" :src="require('@/assets/logo/nAIdemoc_gray.png')" />
+      </v-row>
+      <v-list>
+        <v-divider />
+        <v-list-item v-for="(item, i) in items" :key="i" link :to="item.path" @click="drawer=false">
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -27,7 +31,6 @@
     <v-main>
       <router-view/>
     </v-main>
-
   </v-app>
 </div>
 </template>
@@ -51,6 +54,11 @@ export default {
           name: "Chat",
           path: "/chat",
           icon: "mdi-robot-excited",
+        },
+        {
+          name: "nonodebris.com",
+          path: "/nonodebris-com",
+          icon: "mdi-star-shooting",
         },
       ],
       team: "nonodebris.com"
