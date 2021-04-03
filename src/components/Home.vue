@@ -1,5 +1,5 @@
 <template>
-<div class="home">
+<div id="home">
   <!-- About nAIdemoc -->
   <v-row justify="center" class="px-8 py-6">
     <v-card width="95%" max-width="600px">
@@ -16,8 +16,8 @@
       </v-img>
 
       <!-- Description -->
-      <v-card-title>{{ product }}</v-card-title>
-      <v-card-text>
+      <v-card-title class="px-8">{{ product }}</v-card-title>
+      <v-card-text class="px-8">
         コンピュータが笑いを取る時代が来た！？
         <br/>
         {{ product }} は機械学習を応用したツッコミチャットBOTです。
@@ -29,7 +29,7 @@
 
   <!-- How to Play -->
   <v-row justify="center" class="px-8 py-3">
-    <v-card width="95%" max-width="600px">
+    <v-card width="95%" max-width="600px" class="px-8 py-3">
       <v-card-title>How to Play</v-card-title>
       <v-carousel height="auto" show-arrows-on-hover>
         <v-carousel-item
@@ -51,7 +51,7 @@
 
   <!-- Technologies -->
   <v-row justify="center" class="px-8 py-3">
-    <v-card width="95%" max-width="600px">
+    <v-card width="95%" max-width="600px" class="px-8 py-3">
       <v-card-title>Technologies</v-card-title>
       <v-carousel height="auto" show-arrows-on-hover>
         <v-carousel-item
@@ -73,32 +73,11 @@
 
   <!-- About nonodebris.com -->
   <v-row justify="center" class="px-8 py-6">
-    <v-card width="95%" max-width="600px">
+    <v-card width="95%" max-width="600px" class="px-8 py-3">
       <v-card-title>{{ team }}</v-card-title>
       <v-card-text>
         {{ team }} は宇宙と技術をこよなく愛する有志の学生チームです。
       </v-card-text>
-
-      <v-card-title>Past Initiatives</v-card-title>
-      <v-card-text><strong>Res-CUE!!! - 2018</strong></v-card-text>
-      <div class="tube">
-        <iframe 
-          width="500px" height="350px"
-          src="https://www.youtube.com/embed/ZGGGOiP5irA" title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen 
-        />
-      </div>
-
-      <v-card-text><strong>Plaundry - 2020</strong></v-card-text>
-      <v-layout justify-center>
-        <v-img
-          contain
-          max-width="90%"
-          max-height="calc(100vh - 56px - 36px - 24px - 50px)"
-          :src="require('@/assets/home/plaundry.png')"
-        />
-      </v-layout>
     </v-card>
   </v-row>
 
@@ -155,20 +134,4 @@ export default {
 
 
 <style scoped>
-#main-image {
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-}
-
-.tube {
-  max-width: 90%;
-  max-height: calc(100vh - 56px - 36px - 24px - 50px);
-  aspect-ratio: 16 / 9;
-  margin:auto;
-}
-.tube iframe {
-  width: 100%;
-  height: 100%;
-}
 </style>
