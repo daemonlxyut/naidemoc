@@ -10,9 +10,9 @@
     </v-app-bar>
 
     <!-- Navigation Menu -->
-    <v-navigation-drawer app v-model="drawer">
+    <v-navigation-drawer app v-model="drawer" temporary>
       <v-list dense>
-        <v-list-item v-for="item in items" :key="item.name" link :to="item.path">
+        <v-list-item v-for="item in items" :key="item.name" link :to="item.path" @click="drawer=false">
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
