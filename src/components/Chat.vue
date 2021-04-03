@@ -174,6 +174,7 @@ export default {
     send(test=false) {
       // 空白の時は何もしない
       if (this.textmsg === '') return;
+      console.log(this.textmsg);
 
       // 入力者の入力内容をchatLogに追記
       this.chatLog.push({
@@ -263,6 +264,7 @@ export default {
             style: "message",
             stamp: null,
           });
+          console.log(res.data.output);
 
           // チャット最新まで強制スクロール
           this.$vuetify.goTo(document.getElementById("chat").scrollHeight);
@@ -291,7 +293,8 @@ export default {
   border-radius: 0px 12px 12px 12px;
 }
 .msg-box-robo span {
-  word-wrap: break-word;
+  /* word-wrap: break-word; */
+  word-break: break-all;
   text-align: left;
   color: #dfdfdf;
 }
@@ -303,7 +306,8 @@ export default {
   border-radius: 12px 0px 12px 12px;
 }
 .msg-box-you span {
-  word-wrap: break-word;
+  /* word-wrap: break-word; */
+  word-break: break-all;
   text-align: left;
   color: #dfdfdf;
 }
