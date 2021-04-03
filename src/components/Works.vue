@@ -22,7 +22,7 @@
       <v-card-title>Plaundry</v-card-title>
       <v-card-subtitle>2020</v-card-subtitle>
       <v-card-text>
-        JOINT Hack U KANAGAWA 2019 <a href="https://hacku.yahoo.co.jp/kanagawa2019/">最優秀賞</a>
+        JOINT Hack U KANAGAWA 2019 <a href="https://hacku.yahoo.co.jp/kanagawa2019/" class="text-decoration-none">最優秀賞</a>
       </v-card-text>
       <v-layout justify-center class="px-8 py-3">
         <v-img
@@ -39,7 +39,7 @@
       <v-card-title>nAIdemoc</v-card-title>
       <v-card-subtitle>2021</v-card-subtitle>
       <v-card-text>
-        Hack Day 出場
+        Hack Day 2021 出場
       </v-card-text>
     </v-card>
   </v-row>
