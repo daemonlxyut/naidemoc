@@ -31,7 +31,7 @@
   <v-row justify="center" class="px-8 py-3">
     <v-card width="95%" max-width="600px" class="px-8 py-3">
       <v-card-title>How to Play</v-card-title>
-      <v-carousel height="auto" show-arrows-on-hover>
+      <v-carousel height="auto" show-arrows-on-hover hide-delimiter-background light>
         <v-carousel-item
           v-for="(item,i) in howToPlay"
           :key="i"
@@ -53,7 +53,7 @@
   <v-row justify="center" class="px-8 py-3">
     <v-card width="95%" max-width="600px" class="px-8 py-3">
       <v-card-title>Technologies</v-card-title>
-      <v-carousel height="auto" show-arrows-on-hover>
+      <v-carousel height="auto" show-arrows-on-hover hide-delimiter-background light>
         <v-carousel-item
           v-for="(item,i) in techDesc"
           :key="i"
