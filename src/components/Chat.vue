@@ -174,7 +174,6 @@ export default {
     send(test=false) {
       // 空白の時は何もしない
       if (this.textmsg === '') return;
-      console.log(this.textmsg);
 
       // 入力者の入力内容をchatLogに追記
       this.chatLog.push({
@@ -260,11 +259,10 @@ export default {
         if (res.status == 200) {
           this.chatLog.push({
             who: "robot",
-            msg: res.data.output,
+            msg: res.data.output.trim(),
             style: "message",
             stamp: null,
           });
-          console.log(res.data.output);
 
           // チャット最新まで強制スクロール
           this.$vuetify.goTo(document.getElementById("chat").scrollHeight);
