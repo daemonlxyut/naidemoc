@@ -1,55 +1,69 @@
 <template>
-  <div id="chat">
+<div id="chat">
+  <v-navigation-drawer app v-model="drawer" temporary right  width="60%">
+    <v-row
+      class="px-6 py-8 d-flex flex-wrap"
+    >
+      <v-card 
+        v-for="(item, i) in stampList" :key="i" 
+        class="mx-4 my-3 px-2 py-2"
+        @click="pushStamp(i)"
+      >
+        <v-avatar tile size="128">
+          <v-img contain :src="item.path" />
+        </v-avatar>
+      </v-card>
+    </v-row>
+  </v-navigation-drawer>
 
-    <!-- 左側 -->
-    <div id="talk">
-
-      <!-- 会話履歴 -->
-      <div id="field">
-
-        <div class="balloon" v-for="(val, i) in chatLog" v-bind:key="i">
-          <div class="stamp_you" v-if="isStamp(i)">
-            <!-- スタンプの場合の処理 -->
-            <img class="stamp_chat" v-bind:src="val.stamp">
-          </div>
-
-          <div class="balloon_you" v-else-if="isYou(i)">
-            <!-- 入力者の場合の処理 -->
-            <p>{{ val.msg }}</p>
-          </div>
-
-          <div class="balloon_robot" v-else>
-            <!-- AIの場合の処理 -->
-            <div class="icon">
-              <img src="@/assets/icon/icon.png">
+  <v-row justify="center" class="px-8 py-6">
+    <v-list width="100%" max-width="500px" three-line>
+      <v-list-item v-for="(item, i) in chatLog" :key="i">
+        <v-list-item-avatar>
+          <v-img v-show="!isYou(i)" :src="require('@/assets/icon/icon.png')" />
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <div>
+            <div v-if="isStamp(i)" class="msg-box-stamp">
+              <v-avatar tile size=128>
+                <v-img contain :src="item.stamp" />
+              </v-avatar>
             </div>
-            <div class="text_robot">
-              <div class="chat_robot">
-                <p>{{ val.msg }}</p>
-              </div>
+            <div v-else-if="!isYou(i)" class="msg-box-robo">
+              <span>{{item.msg}}</span>
+            </div>
+            <div v-else class="msg-box-you">
+              <span>{{item.msg}}</span>
             </div>
           </div>
+        </v-list-item-content>
+        <v-list-item-avatar>
+          <v-icon v-show="isYou(i)" color="dark-blue">mdi-account</v-icon>
+        </v-list-item-avatar>
+      </v-list-item>
+    </v-list>
+  </v-row>
 
-        </div>
-      </div>
-
-      <!-- 送信，テキストボックス -->
-      <div id="input_field">
-        <!-- textmsgに代入 -->
-        <input id="chat_input" v-model="textmsg" placeholder="ここに入力してね">
-        <button id="chat_button" v-on:click="send()">送信</button>
-      </div>
-    </div>
-
-    <!-- 右側 -->
-    <div id="stamp_field">
-      <div id="stamp_area">
-        <div class="stamp_card" v-for="(item, i) in stampList" v-bind:key="i">
-          <img class="stamp_fig" v-bind:src="item.path" v-on:click="pushStamp(i)">
-        </div>
-      </div>
-    </div>
-  </div>
+  <v-footer
+    light fixed app
+    color="rgba(0, 0, 0, 0)"
+  >
+    <v-layout justify-center>
+      <v-card width="90%" max-width="480px" class="px-8 py-1">
+        <v-text-field
+          v-model="textmsg"
+          color="deep-orange"
+          label="Input a Joke!"
+          :prepend-icon="'mdi-stamper'"
+          :append-icon="'mdi-send'"
+          @click:prepend="drawer=!drawer"
+          @click:append="send()"
+          @keydown.enter="send()"
+        />
+      </v-card>
+    </v-layout>
+  </v-footer>
+</div>
 </template>
 
 
@@ -62,12 +76,20 @@ export default {
     return {
       // 最初，テキストボックスの中身は空欄
       textmsg: '',
+      // スタンプバーの表示切替
+      drawer: null,
       // チャットの履歴
       chatLog: [
         {
             who: "robot",
             style: "message",
             msg: "鋭いツッコミ入れたるで。",
+            stamp: null
+        },
+        {
+            who: "you",
+            style: "message",
+            msg: "ほなボケかましたりますわ。",
             stamp: null
         },
       ],
@@ -140,10 +162,16 @@ export default {
         style: "stamp",
         stamp: this.stampList[i].path
       });
+
+      // スタンプナビゲーションを閉じる
+      this.drawer = !this.drawer;
+
+      // チャット最新まで強制スクロール
+      this.$vuetify.goTo(document.getElementById("chat").scrollHeight);
     },
 
     // 送信ボタン実行時の処理
-    send() {
+    send(test=false) {
       // 空白の時は何もしない
       if (this.textmsg === '') return;
 
@@ -155,15 +183,21 @@ export default {
         stamp: null
       });
 
-      // URIで本番APIと通信
-      let uritext = encodeURIComponent(this.textmsg);
-      this.api_release(uritext);
+      // チャット最新まで強制スクロール
+      this.$vuetify.goTo(document.getElementById("chat").scrollHeight);
 
+      // URIで本番APIと通信
+      if (!test) {
+        let uritext = encodeURIComponent(this.textmsg);
+        this.api_release(uritext);
+      }
       // デモ用APIと通信
-      // let jsontext = JSON.stringify({
-      //   "text": this.textmsg
-      // });
-      // this.api_demo(jsontext);
+      else {
+        let jsontext = JSON.stringify({
+          "text": this.textmsg
+        });
+        this.api_demo(jsontext);
+      }
 
       // 送信ボタンを押した後は空欄に戻す
       this.textmsg = '';
@@ -179,6 +213,9 @@ export default {
           style: "message",
           stamp: null
         })
+
+        // チャット最新まで強制スクロール
+        this.$vuetify.goTo(document.getElementById("chat").scrollHeight);
       }
 
       // 1秒後に応答
@@ -226,6 +263,9 @@ export default {
             style: "message",
             stamp: null,
           });
+
+          // チャット最新まで強制スクロール
+          this.$vuetify.goTo(document.getElementById("chat").scrollHeight);
         }
         // ステータスコードが200以外のとき
         else {
@@ -243,223 +283,31 @@ export default {
 
 
 <style scoped>
-  /* チャットページ全体 */
-  #chat{
-    height: calc(100vh - 60px);
-    margin: 0;
-    padding: 0;
-    /* background-color: #FFCC8A; */
-    /* font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif; */
-  }
-
-  /* チャット蘭 */
-  #talk{
-    width: 70%;
-    height: calc(98% - 0px);
-    margin: 0;
-    padding: 0 2%;
-    position: relative;
-    float: left;
-    /* background-color: #ffcc8a; */
-    /* text-align: right; */
-  }
-
-  #field{
-    width: 96%;
-    height: calc(97% - 50px);
-    bottom: calc(50px + 1%);
-    padding: 0 1%;
-    position: absolute;
-    box-sizing: border-box;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    background-color: #ffe0b8;
-  }
-
-  #input_field{
-    width: 96%;
-    height: 50px;
-    bottom:1%;
-    margin-bottom: 0;
-    position: absolute;
-    display: flex;
-    background-color: #350800;
-  }
-
-  #chat_input{
-    height: 28px;
-    width: calc(100% - 10% - 1% - 10% - 72px);
-    display: block;
-    font-size: 18px;
-    color: #31302F;
-    background-color: #ffffff;
-    box-sizing: border-box;
-    border: 1px solid #777;
-    border-radius: 4px;
-    padding-left: 1%;
-    margin: auto 1% auto 10%;
-  }
-
-  #chat_input:focus{
-    border: 2.0px solid #FFCC8A;
-    outline: 0;
-  }
-
-  #chat_button{
-    cursor: pointer;
-    height: 28px;
-    width: 72px;
-    margin: auto 10% auto auto; /* auto 0 */
-    font-size: 18px;
-    background: #FF4609;
-    color: #ffffff;
-    display: block;
-    border: none;
-    box-sizing: border-box;
-    border-radius: 6.5px;
-  }
-  
-  #chat_button:active{
-    /* 変な枠線をどうにかしたい - when chrome */
-    background-color: #a32900;
-    color: #fdfdfd;
-    outline: none;
-  }
-
-  /* トーク内容 */
-  .balloon{
-    background-color: #ffe0b8;
-  }
-
-  .stamp_you {
-    /* margin-right: auto; */
-    text-align: right;
-  }
-  .stamp_chat {
-    /* max-width: 150px; */
-    max-height: 150px;
-    margin: 10px;
-    padding: 8px;
-  }
-
-  .balloon_you{
-    margin: 10px 0;
-    text-align: right; /* ふきだし自体は右揃え */
-  }
-  .balloon_you p{
-    display: inline-block;
-    position: relative;
-    margin: 0 10px 0 0;
-    padding: 8px;
-    max-width: 70%;
-    border-radius: 12px;
-    background-color: #FF4609;
-    color: #dfdfdf;
-    font-size: 15px;
-    word-wrap: break-word; /* 単語の改行． */
-    text-align: left; /* ふきだしの中では左揃え */
-  }
-  .balloon_you p:after{
-    content: "";
-    position: absolute;
-    top: 3px;
-    right: -19px;
-    border: 8px solid transparent;
-    border-left: 18px solid #ff4609;
-    -webkit-transform: rotate(-35deg);
-    transform: rotate(-35deg);
-  }
-  .balloon_robot{
-    width: 100%;
-    margin: 10px 0;
-    font-size: 15px;
-  }
-  .icon{
-    float:left;
-    margin-right: -50px;
-    width: 50px;
-  }
-  .icon img{
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
-  }
-  .text_robot{
-    width: 100%;
-    text-align: left;
-  }
-  .chat_robot{
-    display: inline-block;
-    position: relative;
-    margin: 0 0 0 60px;
-    padding: 10px;
-    max-width: 250px;
-    border-radius: 12px;
-    color: #dfdfdf;
-    background-color: #31302F;
-    word-wrap: break-word;
-  }
-  .chat_robot:after{
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 3px;
-    left: -19px;
-    border: 8px solid transparent;
-    border-right: 18px solid #31302F;
-    -webkit-transform: rotate(35deg);
-    transform: rotate(35deg); 
-  }
-  .chat_robot p{
-    margin: 0;
-    padding: 0;
-  }
-
-  /* スタンプ系列 */
-  #stamp_field{
-    width: 25%;
-    height: calc(100vh - 60px);
-    margin: 0;
-    padding: 0;
-    float: right;
-  }
-
-  #stamp_area {
-    width: 19%;
-    top: calc(2% + 60px);
-    bottom: 2%;
-    padding: 2%;
-    background-color: #ffe0b8;
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: stretch;
-    align-content: flex-start;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .stamp_card {
-    margin: 5px;
-    width: 120px;
-    height: 120px;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    position: relative;
-  }
-
-  .stamp_fig {
-    max-height: 100px;
-    max-width: 100px;
-    display: block;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    left: 50%
-  }
-
+.msg-box-robo {
+  background: #ff4609;
+  float: left;
+  margin: 0;
+  padding: 12px 24px;
+  border-radius: 0px 12px 12px 12px;
+}
+.msg-box-robo span {
+  word-wrap: break-word;
+  text-align: left;
+  color: #dfdfdf;
+}
+.msg-box-you {
+  background: #31302F;
+  float: right;
+  margin: 0;
+  padding: 12px 24px;
+  border-radius: 12px 0px 12px 12px;
+}
+.msg-box-you span {
+  word-wrap: break-word;
+  text-align: left;
+  color: #dfdfdf;
+}
+.msg-box-stamp {
+  float: right;
+}
 </style>
