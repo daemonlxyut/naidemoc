@@ -29,7 +29,7 @@
           contain
           max-width="90%"
           max-height="calc(100vh - 56px - 36px - 24px - 50px)"
-          :src="require('@/assets/home/plaundry.png')"
+          :src="require('@/assets/work/plaundry.png')"
         />
       </v-layout>
     </v-card>
