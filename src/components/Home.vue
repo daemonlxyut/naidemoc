@@ -31,21 +31,14 @@
   <v-row justify="center" class="px-8 py-3">
     <v-card width="95%" max-width="600px" class="px-8 py-3">
       <v-card-title>How to Play</v-card-title>
-      <v-carousel height="auto" show-arrows-on-hover hide-delimiter-background light>
-        <v-carousel-item
-          v-for="(item,i) in howToPlay"
-          :key="i"
-          reverse-transition="fade-transition"
-          transition="fade-transition"
-        >
-          <v-img
-            contain
-            max-width="100%" 
-            max-height="calc(100vh - 56px - 36px - 24px - 50px)"
-            :src="item.path"
-          />
-        </v-carousel-item>
-      </v-carousel>
+      <v-layout justify-center class="px-8 py-3">
+        <v-img
+          contain
+          max-width="90%"
+          max-height="calc(100vh - 56px - 36px - 24px - 50px)"
+          :src="require('@/assets/home/howToPlay.gif')"
+        />
+      </v-layout>
     </v-card>
   </v-row>
 
@@ -108,23 +101,6 @@ export default {
         {
           description: "Data Flow",
           path: require("@/assets/home/desc2.png"),
-        },
-      ],
-      howToPlay: [
-        {
-          step: 1,
-          description: "チャットでボケよう！",
-          path: require("@/assets/home/step1.png")
-        },
-        {
-          step: 2,
-          description: "AIがツッコミを返してくれる！",
-          path: require("@/assets/home/step2.png")
-        },
-        {
-          step: 3,
-          description: "気持ちをスタンプで表現！",
-          path: require("@/assets/home/step3.png")
         },
       ],
     }
