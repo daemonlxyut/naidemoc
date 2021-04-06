@@ -24,6 +24,20 @@
         <br/>
         あなたのボケに応じてツッコミを返してくれます。
       </v-card-text>
+
+      <v-layout justify-center class="py-3">
+        <v-btn
+          color="deep-orange"
+          class="ma-2 pa-5 white--text"
+          rounded
+          :to="'/chat'"
+        >
+          Go to Chat
+          <v-icon right dark>
+            mdi-chat
+          </v-icon>
+        </v-btn>
+      </v-layout>
     </v-card>
   </v-row>
 
@@ -38,6 +52,19 @@
           max-height="calc(100vh - 56px - 36px - 24px - 50px)"
           :src="require('@/assets/home/howToPlay.gif')"
         />
+      </v-layout>
+      <v-layout justify-center class="py-3">
+        <v-btn
+          color="deep-orange"
+          class="ma-2 pa-5 white--text"
+          rounded
+          :to="'/chat'"
+        >
+          Go to Chat
+          <v-icon right dark>
+            mdi-chat
+          </v-icon>
+        </v-btn>
       </v-layout>
     </v-card>
   </v-row>
@@ -61,6 +88,20 @@
           />
         </v-carousel-item>
       </v-carousel>
+      <v-layout justify-center class="py-3">
+        <v-btn
+          color="deep-orange"
+          class="ma-2 pa-5"
+          outlined
+          rounded
+          href="https://github.com/daemonlxyut/naidemoc"
+        >
+          Go to Repository
+          <v-icon right >
+            mdi-github
+          </v-icon>
+        </v-btn>
+      </v-layout>
     </v-card>
   </v-row>
 
@@ -71,6 +112,20 @@
       <v-card-text>
         {{ team }} は宇宙と技術をこよなく愛する有志の学生チームです。
       </v-card-text>
+      <v-layout justify-center class="py-3">
+        <v-btn
+          color="light-blue lighten-2"
+          class="ma-2 pa-5"
+          outlined
+          rounded
+          :to="'/nonodebris-com'"
+        >
+          Our Information
+          <v-icon right dark>
+            mdi-star-shooting
+          </v-icon>
+        </v-btn>
+      </v-layout>
     </v-card>
   </v-row>
 
