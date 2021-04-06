@@ -29,12 +29,12 @@
 
   <!-- How to Play -->
   <v-row justify="center" class="px-8 py-3">
-    <v-card width="95%" max-width="600px" class="px-8 py-3">
-      <v-card-title>How to Play</v-card-title>
-      <v-layout justify-center class="px-8 py-3">
+    <v-card width="95%" max-width="600px" class="py-3">
+      <v-card-title class="px-8">How to Play</v-card-title>
+      <v-layout justify-center class="px-4 py-3">
         <v-img
           contain
-          max-width="90%"
+          max-width="100%"
           max-height="calc(100vh - 56px - 36px - 24px - 50px)"
           :src="require('@/assets/home/howToPlay.gif')"
         />
