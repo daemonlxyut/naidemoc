@@ -27,7 +27,7 @@ nAIdemocはAIによるツッコミチャットボットです。<br>
 
 ### Dependencies
 
-#### 開発環境
+開発環境
 
 - system
   - Node.js: v14.16.0
@@ -87,28 +87,82 @@ npm install sass sass-loader deepmerge -D
 
 #### Vuetifyの設定
 
-後日記載。
+`build/webpack.base.conf.js`に下記の内容を追加
+
+```diff
+module.exports = {
+  ...
+  module: {
+    rules: [
+      ...
++     {
++       test: /\.s(c|a)ss$/,
++       use: [
++         'vue-style-loader',
++         'css-loader',
++         {
++           loader: 'sass-loader',
++           // Requires >= sass-loader@^8.0.0
++           options: {
++             implementation: require('sass'),
++             sassOptions: {
++               indentedSyntax: true // optional
++             },
++           },
++         },
++       ],
++     },
+    ]
+  }
+  ...
+}
+```
+
+`src/plugins/vuetify.js`を下記の内容で作成
+
+```js
+import Vue from 'vue'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+
+Vue.use(Vuetify)
+
+const opts = {}
+
+export default new Vuetify(opts)
+```
+
+`src/main.js`に下記の内容を追加
+
+```diff
+...
++ import vuetify from '@/plugins/vuetify'
+...
+new Vue({
+  el: '#app',
+  ...
++ vuetify,
+  ...
+})
+```
 
 #### ビルドの設定
 
-`npm run build`実行時の出力先を`/dist`から`/docs`に変更
+`npm run build`実行時の出力先を`/dist`から`/docs`に変更するため、`config/index.js`を修正
 
-```js
-// config/index.js
+```diff
 module.exports = {
+  ...
   build: {
-    // Before
-    index: path.resolve(__dirname, '../dist/index.html'),
-    assetsRoot: path.resolve(__dirname, '../dist'),
+-   index: path.resolve(__dirname, '../dist/index.html'),
++   index: path.resolve(__dirname, '../docs/index.html'),
+-   assetsRoot: path.resolve(__dirname, '../dist'),
++   assetsRoot: path.resolve(__dirname, '../docs'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-
-    // After
-    index: path.resolve(__dirname, '../docs/index.html'),
-    assetsRoot: path.resolve(__dirname, '../docs'),
-    assetsSubDirectory: 'static',
-    assetsPublicPath: './',
+-   assetsPublicPath: '/',
++   assetsPublicPath: './',
   }
+  ...
 }
 ```
 
