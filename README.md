@@ -18,10 +18,10 @@ nAIdemocはAIによるツッコミチャットボットです。<br>
 
 ## Status
 
-| リリース | 状況 | 実装内容 |
-| ---- | ---- | ---- |
-| alpha | closed | Main & Chat Page |
-| beta  | now | Apply Vuetify and Add Our Page |
+| リリース | Version | 状況 | 実装内容 |
+| ---- | ---- | ---- | ---- |
+| alpha | 0.x | done | Main & Chat Page |
+| beta  | 1.0 | done | Apply Vuetify and Add Our Page |
 
 ## Application
 
