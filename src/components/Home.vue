@@ -16,7 +16,9 @@
       </v-img>
 
       <!-- Description -->
-      <v-card-title class="px-8">{{ product }}</v-card-title>
+      <v-layout class="px-8 py-6">
+        <h1>{{ product }}</h1>
+      </v-layout>
       <v-card-text class="px-8">
         コンピュータが笑いを取る時代が来た！？
         <br/>
