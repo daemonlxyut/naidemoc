@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Chat from '@/components/Chat'
-import Work from '@/components/Works'
 
 Vue.use(Router)
 
@@ -16,12 +14,12 @@ export default new Router({
     {
       path: '/chat',
       name: 'Chat',
-      component: Chat
+      component: () => import(/* webpackChunkName: "about" */ '@/components/Chat.vue')
     },
     {
       path: '/nonodebris-com',
       name: 'Work',
-      component: Work
+      component: () => import(/* webpackChunkName: "about" */ '@/components/Works.vue')
     },
   ]
 })
