@@ -5,8 +5,9 @@
     <v-app-bar app color="#350800" dark>
       <v-app-bar-nav-icon @click="drawer=!drawer" />
       <v-spacer/>
-      <v-img contain height="60%" :src="require('@/assets/logo/nAIdemoc_white.png')" />
+      <v-img contain height="60%" width="60%" :src="require('@/assets/logo/nAIdemoc_white.png')" />
       <v-spacer/>
+      <v-avatar/>
     </v-app-bar>
 
     <!-- Navigation Menu -->
